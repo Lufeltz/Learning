@@ -12,11 +12,24 @@ app.set("views", "./views");
 
 // Rotas
 app.get("/", (req, res) => {
-    res.render("begin");
+    res.render("begin", {
+        value: false,
+        helpers: {
+            testFunc() {
+                return "test.";
+            },
+        },
+    });
 });
 
 app.get("/about", (req, res) => {
-    res.render("about");
+    const pessoas = [
+        { nome: "Carlos", idade: 30 },
+        { nome: "Antonio", idade: 24 },
+        { nome: "Rogerio", idade: 32 },
+    ];
+
+    res.render("about", { dados: pessoas });
 });
 
 app.listen(3000);
