@@ -27,3 +27,9 @@ fs.readFile("cursos.json", (err, data) => {
         console.log(`Servidor rodando na porta: ${PORT}`);
     });
 });
+
+app.get("/cursos", (req, res) => {
+    console.log(cursos);
+    res.json(cursos);
+});
+
