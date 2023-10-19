@@ -1,19 +1,39 @@
 {
-    "cursos": [
-        {
-            "nome": "Node.js",
-            "valor": 900,
-            "id": 1
-        },
-        {
-            "nome": "React.js",
-            "valor": 550,
-            "id": 2
-        },
-        {
-            "nome": "ASP.NET",
-            "valor": 750,
-            "id": 3
-        }
-    ]
+  "cursos": [
+    {
+      "nome": "Node.js",
+      "valor": 900,
+      "id": 1
+    },
+    {
+      "nome": "React.js",
+      "valor": 550,
+      "id": 2
+    },
+    {
+      "nome": "ASP.NET",
+      "valor": 750,
+      "id": 3
+    },
+    {
+      "nome": "Angular",
+      "valor": 700,
+      "id": 4
+    },
+    {
+      "nome": "C#",
+      "valor": 120,
+      "id": 5
+    },
+    {
+      "nome": "JavaScript",
+      "valor": 310,
+      "id": 6
+    },
+    {
+      "nome": "JavaScript",
+      "valor": 310,
+      "id": 7
+    }
+  ]
 }
