@@ -28,12 +28,28 @@ fs.readFile("cursos.json", (err, data) => {
     });
 });
 
+// Retornar todos os cursos
 app.get("/cursos", (req, res) => {
     const jsonCursos = JSON.stringify(cursos, null, 2);
     console.log(jsonCursos);
     res.status(200).send(jsonCursos);
 });
 
+// Retornar curso por id
+app.get("/cursos/:id", (req, res) => {
+    const cursoId = req.params.id;
+    const curso = cursos.find((curso) => curso.id == parseInt(cursoId));
+
+    if (!curso) {
+        res.status(404).send("Curso não encontrado!");
+    } else {
+        const jsonCurso = JSON.stringify(curso, null, 2);
+        console.log(jsonCurso);
+        res.status(200).send(jsonCurso);
+    }
+});
+
+// Adicionar um novo curso
 app.post("/cursos", (req, res) => {
     const novoCurso = {
         nome: req.body.nome,
