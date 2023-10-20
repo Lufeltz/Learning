@@ -29,8 +29,9 @@ fs.readFile("cursos.json", (err, data) => {
 });
 
 app.get("/cursos", (req, res) => {
-    console.log(cursos);
-    res.json(cursos);
+    const jsonCursos = JSON.stringify(cursos, null, 2);
+    console.log(jsonCursos);
+    res.status(200).send(jsonCursos);
 });
 
 app.post("/cursos", (req, res) => {
@@ -41,17 +42,11 @@ app.post("/cursos", (req, res) => {
     };
     cursos.push(novoCurso);
 
-    fs.writeFile(
-        "cursos.json",
-        JSON.stringify({ cursos: cursos }, null, 2),
-        (err) => {
-            if (err) {
-                console.error("Erro ao escrever os dados no arquivo: ", err);
-                return res
-                    .status(500)
-                    .json({ error: "Erro interno do servidor!" });
-            }
-            res.status(201).json(novoCurso);
+    fs.writeFile("cursos.json", JSON.stringify(cursos, null, 2), (err) => {
+        if (err) {
+            console.error("Erro ao escrever os dados no arquivo: ", err);
+            return res.status(500).json({ error: "Erro interno do servidor!" });
         }
-    );
+        res.status(201).json(novoCurso);
+    });
 });
