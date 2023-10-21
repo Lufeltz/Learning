@@ -125,3 +125,43 @@ app.post("/cursos", (req, res) => {
         );
     });
 });
+
+app.delete("/cursos/:id", (req, res) => {
+    const cursoId = req.params.id;
+    const cursoIndex = cursos.findIndex(
+        (curso) => curso.id === parseInt(cursoId)
+    );
+
+    // Checa se o curso existe
+    if (cursoIndex === -1) {
+        res.status(404).json({ error: "Curso não encontrado!" });
+    }
+
+    const cursoRemovido = cursos.splice(cursoIndex, 1)[0];
+
+    fs.readFile("cursos.json", (err, data) => {
+        if (err) {
+            console.error("Erro ao ler o arquivo:", err);
+            return res.status(500).json({ error: "Erro interno no servidor!" });
+        }
+
+        const jsonContent = JSON.parse(data);
+        jsonContent.cursos = cursos; // Atualiza o objeto cursos no JSON
+
+        // Escreve o arquivo novamente com a estrutura correta
+        fs.writeFile(
+            "cursos.json",
+            JSON.stringify(jsonContent, null, 2),
+            (err) => {
+                if (err) {
+                    console.error("Erro ao escrever os dados no arquivo:", err);
+                    return res
+                        .status(500)
+                        .json({ error: "Erro interno no servidor!" });
+                }
+
+                res.status(200).json(cursoRemovido);
+            }
+        );
+    });
+});
