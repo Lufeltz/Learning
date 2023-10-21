@@ -64,7 +64,6 @@ app.put("/cursos/:id", (req, res) => {
     curso.nome = req.body.nome;
     curso.valor = req.body.valor;
 
-
     fs.readFile("cursos.json", (err, data) => {
         if (err) {
             console.error("Erro ao ler o arquivo:", err);
@@ -75,14 +74,20 @@ app.put("/cursos/:id", (req, res) => {
         jsonContent.cursos = cursos; // Atualiza o objeto cursos no JSON
 
         // Escreve o arquivo novamente com a estrutura correta
-        fs.writeFile("cursos.json", JSON.stringify(jsonContent, null, 2), (err) => {
-            if (err) {
-                console.error("Erro ao escrever os dados no arquivo:", err);
-                return res.status(500).json({ error: "Erro interno no servidor!" });
+        fs.writeFile(
+            "cursos.json",
+            JSON.stringify(jsonContent, null, 2),
+            (err) => {
+                if (err) {
+                    console.error("Erro ao escrever os dados no arquivo:", err);
+                    return res
+                        .status(500)
+                        .json({ error: "Erro interno no servidor!" });
+                }
+
+                res.status(200).json(curso);
             }
-            
-            res.status(200).json(curso);
-        });
+        );
     });
 });
 
@@ -93,13 +98,30 @@ app.post("/cursos", (req, res) => {
         valor: req.body.valor,
         id: ++nextId,
     };
-    cursos.push(novoCurso);
 
-    fs.writeFile("cursos.json", JSON.stringify(cursos, null, 2), (err) => {
+    fs.readFile("cursos.json", (err, data) => {
         if (err) {
-            console.error("Erro ao escrever os dados no arquivo: ", err);
-            return res.status(500).json({ error: "Erro interno do servidor!" });
+            console.error("Erro ao ler o arquivo:", err);
+            return res.status(500).json({ error: "Erro interno no servidor!" });
         }
-        res.status(201).json(novoCurso);
+
+        const jsonContent = JSON.parse(data);
+        jsonContent.cursos.push(novoCurso);
+
+        // Escreve o arquivo novamente com a estrutura correta
+        fs.writeFile(
+            "cursos.json",
+            JSON.stringify(jsonContent, null, 2),
+            (err) => {
+                if (err) {
+                    console.error("Erro ao escrever os dados no arquivo:", err);
+                    return res
+                        .status(500)
+                        .json({ error: "Erro interno no servidor!" });
+                }
+
+                res.status(200).json(novoCurso);
+            }
+        );
     });
 });
