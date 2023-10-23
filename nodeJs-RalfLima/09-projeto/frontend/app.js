@@ -16,6 +16,10 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
+
+// Especificar arquivos estáticos
+app.use(express.static("public"));
+
 // Rotas
 app.get("/", (req, res) => {
     res.render("begin");
