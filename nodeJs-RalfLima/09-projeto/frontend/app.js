@@ -24,7 +24,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     fetch("http://localhost:3000/clientes", { method: GET })
         .then((resposta) => resposta.json())
-        .then((resposta) => res.render("inicio", { dados: resposta }));
+        .then((resposta) => res.render("begin", { dados: resposta }));
 });
 
 // Servidor

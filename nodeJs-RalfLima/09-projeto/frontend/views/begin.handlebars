@@ -7,7 +7,7 @@
 </form>
 
 {{! Tabela com dados dos usuários }}
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Nome</th>
@@ -15,4 +15,13 @@
             <th>Selecionar</th>
         </tr>
     </thead>
+    <tbody>
+        {{#each dados}}
+            <tr>
+                <td>{{nome}}</td>
+                <td>{{idade}}</td>
+                <td><a href="selecionar/{{id}}">Selecionar</a></td>
+            </tr>
+        {{/each}}
+    </tbody>
 </table>
