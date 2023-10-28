@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 // Rotas
 app.get("/", (req, res) => {
-    fetch("http://localhost:3000/clientes", { method: GET })
+    fetch("http://localhost:3001/clientes", { method: "GET" })
         .then((resposta) => resposta.json())
         .then((resposta) => res.render("begin", { dados: resposta }));
 });
