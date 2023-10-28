@@ -22,9 +22,23 @@ app.use(express.static("public"));
 
 // Rotas
 app.get("/", (req, res) => {
-    fetch("http://localhost:3001/clientes", { method: "GET" })
-        .then((resposta) => resposta.json())
-        .then((resposta) => res.render("begin", { dados: resposta }));
+    fetch("http://localhost:3001/clients", { method: "GET" })
+        .then((response) => response.json())
+        .then((response) => res.render("begin", { data: response }));
+});
+
+
+app.post("/register", (req, res) => {
+    let nome = req.body.nome;
+    let idade = req.body.idade;
+
+    let newClient = { nome: nome, idade: idade };
+
+    fetch("http://localhost:3001/clients", {
+        method: "POST",
+        body: JSON.stringify(newClient),
+        headers: { "Content-Type": "application/json" },
+    }).then(res.redirect("/"));
 });
 
 // Servidor
