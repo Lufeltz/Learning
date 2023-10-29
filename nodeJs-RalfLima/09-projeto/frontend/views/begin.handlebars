@@ -1,8 +1,9 @@
 {{! Formulário }}
-<form action="">
-    <img src="imgs/spooky.png" alt="erro" />
-    <input type="text" placeholder="Nome" class="form-control" />
-    <input type="text" placeholder="Idade" class="form-control" />
+<form action="/register" method="POST">
+    <img src="imgs/spooky.png" alt="user profile image" />
+
+    <input type="text" placeholder="Nome" name="nome" class="form-control" />
+    <input type="text" placeholder="Idade" name="idade" class="form-control" />
     <input type="submit" value="Cadastrar" class="btn btn-primary" />
 </form>
 
@@ -16,11 +17,11 @@
         </tr>
     </thead>
     <tbody>
-        {{#each dados}}
+        {{#each data}}
             <tr>
                 <td>{{nome}}</td>
                 <td>{{idade}}</td>
-                <td><a href="selecionar/{{id}}">Selecionar</a></td>
+                <td><a href="client/{{id}}">Selecionar</a></td>
             </tr>
         {{/each}}
     </tbody>
