@@ -27,18 +27,29 @@ app.get("/", (req, res) => {
         .then((response) => res.render("begin", { data: response }));
 });
 
-
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
     let nome = req.body.nome;
     let idade = req.body.idade;
 
     let newClient = { nome: nome, idade: idade };
 
-    fetch("http://localhost:3001/clients", {
-        method: "POST",
-        body: JSON.stringify(newClient),
-        headers: { "Content-Type": "application/json" },
-    }).then(res.redirect("/"));
+    try {
+        const response = await fetch("http://localhost:3001/clients", {
+            method: "POST",
+            body: JSON.stringify(newClient),
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.ok) {
+            res.redirect("/");
+        } else {
+            console.error("Erro ao registrar cliente.");
+            res.status(500).json({ error: "Erro interno no servidor." });
+        }
+    } catch (error) {
+        console.error("Erro de rede: ", error);
+        res.status(500).json({ error: "Erro interno no servidor" });
+    }
 });
 
 // Servidor
