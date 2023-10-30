@@ -1,0 +1,9 @@
+{{! Formulário }}
+<form action="/register" method="POST">
+    <img src="/imgs/spooky.png" alt="user profile image" />
+
+    <input type="text" value={{data.nome}} placeholder="Nome" name="nome" class="form-control" />
+    <input type="text"value={{data.idade}}  placeholder="Idade" name="idade" class="form-control" />
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+</form>
+
