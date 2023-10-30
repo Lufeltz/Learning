@@ -15,3 +15,13 @@ input{
   margin-top: 1rem;
   text-align: center;
 }
+
+.btn-actions{
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.btn-actions input{
+  margin-top: 0;
+}
