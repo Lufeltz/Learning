@@ -52,5 +52,13 @@ app.post("/register", async (req, res) => {
     }
 });
 
+app.get("/client/:id", (req, res) => {
+    let id = req.params.id;
+
+    fetch(`http://localhost:3001/client/${id}`, { method: "GET" })
+        .then((response) => response.json())
+        .then((response) => res.render("client", { data: response }));
+});
+
 // Servidor
 app.listen(3000);
