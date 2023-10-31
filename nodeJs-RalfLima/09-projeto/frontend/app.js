@@ -6,6 +6,7 @@ import fetch from "node-fetch";
 
 // App
 const app = express();
+const PORT = 3000;
 
 // Body-parser
 
@@ -60,5 +61,30 @@ app.get("/client/:id", (req, res) => {
         .then((response) => res.render("client", { data: response }));
 });
 
+app.post("/edit", async (req, res) => {
+    const nome = req.body.nome;
+    const idade = req.body.idade;
+    const id = req.body.id;
+
+    try {
+        const response = await fetch(`http://localhost:3001/client/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({nome, idade}),
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (response.ok) {
+            res.redirect("/");
+        } else {
+            res.status(response.status).send("Erro ao atualizar o cliente.");
+        }
+    } catch (error) {
+        console.error("Erro durante a requisição", error);
+        res.status(500).send("Erro interno no servidor");
+    }
+});
+
 // Servidor
-app.listen(3000);
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta: ${PORT}`);
+});
