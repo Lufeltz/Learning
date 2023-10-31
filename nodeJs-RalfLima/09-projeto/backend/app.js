@@ -38,6 +38,7 @@ app.get("/clients", (req, res) => {
     res.status(200).send(jsonClient);
 });
 
+// Adicionar um novo cliente
 app.post("/clients", async (req, res) => {
     const newClientRegistration = {
         nome: req.body.nome,
@@ -74,5 +75,38 @@ app.get("/client/:id", (req, res) => {
         const jsonClient = JSON.stringify(client, null, 2);
         console.log(jsonClient);
         res.status(200).send(jsonClient);
+    }
+});
+
+app.put("/client/:id", async (req, res) => {
+    const clientId = req.params.id;
+    const clientIndex = clients.findIndex(
+        (client) => client.id === parseInt(clientId)
+    );
+
+    console.log("clientId:", clientId);
+    if (clientIndex === -1) {
+        res.status(404).send("Cliente não encontrado");
+        return;
+    }
+
+    try {
+        const data = await fs.readFile("clientes.json");
+        const jsonContent = JSON.parse(data);
+
+        // Atualizar os dados do cliente
+        jsonContent.clients[clientIndex].nome = req.body.nome;
+        jsonContent.clients[clientIndex].idade = req.body.idade;
+
+        // Escrever os dados atualizados de volta no arquivo
+        await fs.writeFile(
+            "clientes.json",
+            JSON.stringify(jsonContent, null, 2)
+        );
+
+        res.status(200).json(clients[clientIndex]); // Retornar o cliente atualizado
+    } catch (error) {
+        console.error("Erro ao manipular o arquivo");
+        res.status(500).json({ error: "Erro interno no servidor." });
     }
 });
