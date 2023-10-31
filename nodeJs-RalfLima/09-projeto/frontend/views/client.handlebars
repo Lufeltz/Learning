@@ -1,7 +1,8 @@
 {{! Formulário }}
-<form action="/register" method="POST">
+<form action="/edit" method="POST">
     <img src="/imgs/spooky.png" alt="user profile image" />
 
+    <input type="hidden" value={{data.id}} name="id" class="form-control" />
     <input type="text" value={{data.nome}} placeholder="Nome" name="nome" class="form-control" />
     <input type="text"value={{data.idade}}  placeholder="Idade" name="idade" class="form-control" />
     
