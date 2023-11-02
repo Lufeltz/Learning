@@ -110,3 +110,34 @@ app.put("/client/:id", async (req, res) => {
         res.status(500).json({ error: "Erro interno no servidor." });
     }
 });
+
+app.delete("/client/:id", async (req, res) => {
+    const clientId = req.params.id;
+    const clientIndex = clients.findIndex(
+        (client) => client.id === parseInt(clientId)
+    );
+    console.log("id:", clientId);
+
+    // Checa se o client existe
+    if (clientIndex === -1) {
+        res.status(404).json({ error: "Cliente não encontrado!" });
+    }
+
+    const clientRemovido = clients.splice(clientIndex, 1)[0];
+
+    try {
+        const data = await fs.readFile("clientes.json");
+        const jsonContent = JSON.parse(data);
+        jsonContent.clients = clients;
+        // Escrever os dados atualizados de volta no arquivo
+        await fs.writeFile(
+            "clientes.json",
+            JSON.stringify(jsonContent, null, 2)
+        );
+
+        res.status(200).json(clientRemovido); // Retornar o cliente removido
+    } catch (error) {
+        console.error("Erro ao manipular o arquivo");
+        res.status(500).json({ error: "Erro interno no servidor." });
+    }
+});
