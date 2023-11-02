@@ -61,27 +61,35 @@ app.get("/client/:id", (req, res) => {
         .then((response) => res.render("client", { data: response }));
 });
 
-app.post("/edit", async (req, res) => {
+app.post("/edit", (req, res) => {
     const nome = req.body.nome;
     const idade = req.body.idade;
     const id = req.body.id;
 
     try {
-        const response = await fetch(`http://localhost:3001/client/${id}`, {
+        const response = fetch(`http://localhost:3001/client/${id}`, {
             method: "PUT",
-            body: JSON.stringify({nome, idade}),
+            body: JSON.stringify({ nome, idade }),
             headers: { "Content-Type": "application/json" },
-        });
+        }).then(res.redirect("/"));
 
-        if (response.ok) {
-            res.redirect("/");
-        } else {
-            res.status(response.status).send("Erro ao atualizar o cliente.");
-        }
+        // if (response.ok) {
+        //     res.redirect("/");
+        // } else {
+        //     res.status(response.status).send("Erro ao atualizar o cliente.");
+        // }
     } catch (error) {
         console.error("Erro durante a requisição", error);
         res.status(500).send("Erro interno no servidor");
     }
+});
+
+app.get("/remove/:id", (req, res) => {
+    const id = req.params.id;
+
+    fetch(`http://localhost:3001/client/${id}`, { method: "DELETE" }).then(
+        res.redirect("/")
+    );
 });
 
 // Servidor
