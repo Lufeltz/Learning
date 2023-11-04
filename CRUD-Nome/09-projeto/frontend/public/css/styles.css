@@ -1,0 +1,27 @@
+img {
+  width: 10rem;
+}
+
+form {
+  width: 30rem;
+  margin: 3rem auto;
+  text-align: center;
+  background-color: orange;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+input{
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.btn-actions{
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.btn-actions input{
+  margin-top: 0;
+}

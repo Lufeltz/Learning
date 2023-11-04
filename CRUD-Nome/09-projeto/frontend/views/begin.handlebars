@@ -1,0 +1,28 @@
+{{! Formulário }}
+<form action="/register" method="POST">
+    <img src="imgs/spooky.png" alt="user profile image" />
+
+    <input type="text" placeholder="Nome" name="nome" class="form-control" />
+    <input type="text" placeholder="Idade" name="idade" class="form-control" />
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+</form>
+
+{{! Tabela com dados dos usuários }}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Selecionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+            <tr>
+                <td>{{nome}}</td>
+                <td>{{idade}}</td>
+                <td><a href="client/{{id}}">Selecionar</a></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

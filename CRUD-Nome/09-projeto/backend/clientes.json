@@ -1,0 +1,24 @@
+{
+  "clients": [
+    {
+      "nome": "Carlos Alberto",
+      "idade": "33",
+      "id": 2
+    },
+    {
+      "nome": "Roberta Miranda",
+      "idade": "25",
+      "id": 3
+    },
+    {
+      "nome": "Antonio Carlos",
+      "idade": "58",
+      "id": 4
+    },
+    {
+      "nome": "Carla da Silva",
+      "idade": "18",
+      "id": 5
+    }
+  ]
+}
