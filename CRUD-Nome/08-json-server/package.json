@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "cursos": [
+    {
+      "nome": "ASP.NET",
+      "valor": 750,
+      "id": 3
+    },
+    {
+      "nome": "Angular",
+      "valor": 700,
+      "id": 4
+    },
+    {
+      "nome": "JavaScript",
+      "valor": 310,
+      "id": 5
+    },
+    {
+      "nome": "C++",
+      "valor": 420,
+      "id": 6
+    }
+  ]
+}
