@@ -7,9 +7,15 @@ function Ex01_useState() {
     // useState
     const [text, setText] = useState("Hell World!");
 
+    // Evento
+    const evento = (e) => {
+        setText(e.target.value);
+    };
+
     // retorno
     return (
         <div>
+            <input type="text" onChange={evento} />
             <p>{text}</p>
         </div>
     );
