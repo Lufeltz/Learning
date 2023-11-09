@@ -5,9 +5,10 @@ import Ex02 from "./hooks/Ex02_useState";
 import Ex03 from "./hooks/Ex03_useState";
 import Ex04 from "./hooks/Ex04_useState";
 import Ex05 from "./hooks/Ex05_useEffect";
+import Ex06 from "./hooks/Ex06_useEffect";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <Ex05 />
+        <Ex06 />
     </React.StrictMode>
 );
