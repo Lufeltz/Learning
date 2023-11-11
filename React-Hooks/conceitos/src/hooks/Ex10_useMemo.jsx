@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 function Ex10_useMemo() {
     const [counter, setCounter] = useState(0);
@@ -10,25 +10,28 @@ function Ex10_useMemo() {
         "Juliana",
     ]);
 
+    const withUseMemo = useMemo(() => {
+        return <ListarNomes list={names} />;
+    }, [names]);
+
     return (
         <div>
             <p>Contagem Inicial: {counter}</p>
             <button onClick={() => setCounter(counter + 1)}>Incrementar</button>
-            <ListarNomes list={names} />
+            {withUseMemo}
         </div>
     );
 }
 
-function ListarNomes({list}) {
-  console.log("Lista criada!");
-  return (
-      <ul>
-          {list.map((name) => (
-              <li key={name}>{name}</li>
-          ))}
-      </ul>
-  );
+function ListarNomes({ list }) {
+    console.log("Lista criada!");
+    return (
+        <ul>
+            {list.map((name) => (
+                <li key={name}>{name}</li>
+            ))}
+        </ul>
+    );
 }
-
 
 export default Ex10_useMemo;
