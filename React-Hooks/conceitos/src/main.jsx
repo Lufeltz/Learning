@@ -6,12 +6,13 @@ import Ex03 from "./hooks/Ex03_useState";
 import Ex04 from "./hooks/Ex04_useState";
 import Ex05 from "./hooks/Ex05_useEffect";
 import Ex06 from "./hooks/Ex06_useEffect";
-import Ex07 from "./hooks/Ex07_useContext"
-import Ex08 from './hooks/Ex08_useRef';
-import Ex09 from './hooks/Ex09_useReducer'
+import Ex07 from "./hooks/Ex07_useContext";
+import Ex08 from "./hooks/Ex08_useRef";
+import Ex09 from "./hooks/Ex09_useReducer";
+import Ex10 from "./hooks/Ex10_useMemo";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <Ex09 />
+        <Ex10 />
     </React.StrictMode>
 );
