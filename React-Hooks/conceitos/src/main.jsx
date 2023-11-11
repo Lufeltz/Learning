@@ -7,9 +7,10 @@ import Ex04 from "./hooks/Ex04_useState";
 import Ex05 from "./hooks/Ex05_useEffect";
 import Ex06 from "./hooks/Ex06_useEffect";
 import Ex07 from "./hooks/Ex07_useContext"
+import Ex08 from './hooks/Ex08_useRef';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <Ex07 />
+        <Ex08 />
     </React.StrictMode>
 );
