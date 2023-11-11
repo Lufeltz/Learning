@@ -1,12 +1,18 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const context = createContext();
 
 function Principal() {
     let texto = "Passando a prop!";
 
+    const [fundo, setFundo] = useState('yellow');
+
+    function alterarFundo(){
+      setFundo(fundo === 'yellow'? 'pink': 'yellow');
+    }
+
     return (
-        <context.Provider value={{ texto }}>
+        <context.Provider value={{ texto, fundo, alterarFundo }}>
             <Camada1 />
         </context.Provider>
     );
@@ -44,17 +50,19 @@ function Camada2() {
 }
 
 function Camada3() {
-    const { texto } = useContext(context);
+    const { texto, fundo, alterarFundo } = useContext(context);
     return (
         <div
             style={{
-                backgroundColor: "yellow",
+                backgroundColor: fundo,
                 width: "300px",
                 height: "300px",
                 margin: "50px",
             }}
         >
-            {texto}
+            <p>{texto}</p>
+
+            <button onClick={alterarFundo}>Clique aqui</button>
         </div>
     );
 }
