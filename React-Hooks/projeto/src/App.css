@@ -1,0 +1,21 @@
+form {
+    width: 35%;
+    margin: 10% auto;
+}
+
+form input {
+    margin-top: 1rem;
+}
+
+form input[type="button"] {
+    width: 7rem;
+}
+
+form input[type="button"]:not(:last-child) {
+    margin-right: 10px;
+}
+
+.btn-flux {
+    display: flex;
+    justify-content: space-around;
+}
