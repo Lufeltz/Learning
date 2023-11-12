@@ -10,9 +10,10 @@ import Ex07 from "./hooks/Ex07_useContext";
 import Ex08 from "./hooks/Ex08_useRef";
 import Ex09 from "./hooks/Ex09_useReducer";
 import Ex10 from "./hooks/Ex10_useMemo";
+import Ex11 from "./hooks/Ex11_useCallback";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <Ex10 />
+        <Ex11 />
     </React.StrictMode>
 );
