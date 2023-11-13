@@ -1,4 +1,6 @@
-function Form({ register }) {
+function Form({ isRegister, setName, setAge, setCity }) {
+
+
     return (
         <form>
             <input
@@ -6,22 +8,25 @@ function Form({ register }) {
                 name="name"
                 placeholder="Nome"
                 className="form-control"
+                onChange={e => setName(e.target.value)}
             />
             <input
-                type="number"
+                type="text"
                 name="age"
                 placeholder="Idade"
                 className="form-control"
+                onChange={e => setAge(e.target.value)}
             />
             <input
                 type="text"
                 name="city"
                 placeholder="Cidade"
                 className="form-control"
+                onChange={e => setCity(e.target.value)}
             />
 
             <div className="btn-flux">
-                {register ? (
+                {isRegister ? (
                     <input
                         type="button"
                         value="Register"
