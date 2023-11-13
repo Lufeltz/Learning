@@ -1,4 +1,4 @@
-function Form({ isRegister, setName, setAge, setCity }) {
+function Form({ isRegister, setName, setAge, setCity, register }) {
 
 
     return (
@@ -31,6 +31,7 @@ function Form({ isRegister, setName, setAge, setCity }) {
                         type="button"
                         value="Register"
                         className="btn btn-primary"
+                        onClick={register}
                     />
                 ) : (
                     <div>
