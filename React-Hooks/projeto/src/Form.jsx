@@ -1,4 +1,4 @@
-function Form() {
+function Form({ register }) {
     return (
         <form>
             <input
@@ -9,38 +9,43 @@ function Form() {
             />
             <input
                 type="number"
-                name="idade"
+                name="age"
                 placeholder="Idade"
                 className="form-control"
             />
             <input
                 type="text"
-                name="cidade"
+                name="city"
                 placeholder="Cidade"
                 className="form-control"
             />
 
             <div className="btn-flux">
-                <input
-                    type="button"
-                    value="Cadastrar"
-                    className="btn btn-primary"
-                />
-                <input
-                    type="button"
-                    value="Alterar"
-                    className="btn btn-secondary"
-                />
-                <input
-                    type="button"
-                    value="Excluir"
-                    className="btn btn-danger"
-                />
-                <input
-                    type="button"
-                    value="Cancelar"
-                    className="btn btn-warning"
-                />
+                {register ? (
+                    <input
+                        type="button"
+                        value="Register"
+                        className="btn btn-primary"
+                    />
+                ) : (
+                    <div>
+                        <input
+                            type="button"
+                            value="Modify"
+                            className="btn btn-secondary"
+                        />
+                        <input
+                            type="button"
+                            value="Delete"
+                            className="btn btn-danger"
+                        />
+                        <input
+                            type="button"
+                            value="Cancel"
+                            className="btn btn-warning"
+                        />
+                    </div>
+                )}
             </div>
         </form>
     );
