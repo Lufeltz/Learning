@@ -15,15 +15,17 @@ function Ex06_useEffect() {
         const photosJson = await photos.json();
 
         setVetor(photosJson);
-        setStatus("Photos Loaded!")
+        setStatus("Photos Loaded!");
     };
 
     return (
         <div>
-          <h1>{status}</h1>
-            {vetor.map((photo) => (
-                <li key={photo.id}>{photo.title}</li>
-            ))}
+            <h1>{status}</h1>
+            <ul>
+                {vetor.map((photo) => (
+                    <li key={photo.id}>{photo.title}</li>
+                ))}
+            </ul>
         </div>
     );
 }
