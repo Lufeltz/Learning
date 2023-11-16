@@ -25,7 +25,7 @@ function App() {
                 setCity={setCity}
                 register={registerNewUser}
             />
-            <Table />
+            <Table users={users}/>
         </>
     );
 }
