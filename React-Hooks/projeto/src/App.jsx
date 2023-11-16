@@ -10,10 +10,15 @@ function App() {
     const [age, setAge] = useState("");
     const [city, setCity] = useState("");
     const [users, setUsers] = useState([]);
+    let user = { name, age, city };
 
     const registerNewUser = () => {
         let newUser = { name, age, city };
         setUsers([...users, newUser]);
+
+        setName("");
+        setAge("");
+        setCity("");
     };
 
     return (
@@ -24,8 +29,9 @@ function App() {
                 setAge={setAge}
                 setCity={setCity}
                 register={registerNewUser}
+                user={user}
             />
-            <Table users={users}/>
+            <Table users={users} />
         </>
     );
 }
