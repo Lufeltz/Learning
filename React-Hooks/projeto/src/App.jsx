@@ -23,6 +23,23 @@ function App() {
         setBtnRegister(false);
     };
 
+    const modify = (indice) => {
+        setIndex(indice);
+
+        let user = { name, age, city };
+
+        const usersCopy = [...users];
+        usersCopy[index] = user;
+
+        setUsers(usersCopy);
+
+        setName("");
+        setAge("");
+        setCity("");
+
+        setBtnRegister(true);
+    };
+
     const registerNewUser = () => {
         let newUser = { name, age, city };
         setUsers([...users, newUser]);
@@ -41,6 +58,7 @@ function App() {
                 setCity={setCity}
                 register={registerNewUser}
                 user={user}
+                modify={modify}
             />
             <Table users={users} select={select} />
         </>
