@@ -1,4 +1,4 @@
-function Form({ isRegister, setName, setAge, setCity, register, user }) {
+function Form({ isRegister, setName, setAge, setCity, register, user, modify }) {
     return (
         <form>
             <input
@@ -40,6 +40,7 @@ function Form({ isRegister, setName, setAge, setCity, register, user }) {
                             type="button"
                             value="Modify"
                             className="btn btn-secondary"
+                            onClick={modify}
                         />
                         <input
                             type="button"
