@@ -1,5 +1,5 @@
 // Componente
-function Table({ users }) {
+function Table({ users, select }) {
     return (
         <table className="table">
             <thead>
@@ -19,7 +19,7 @@ function Table({ users }) {
                         <td>{user.age}</td>
                         <td>{user.city}</td>
                         <td>
-                            <button className="btn btn-success">
+                            <button className="btn btn-success" onClick={() => select(indice)}>
                                 Selecionar
                             </button>
                         </td>
