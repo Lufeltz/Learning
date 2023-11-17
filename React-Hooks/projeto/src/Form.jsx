@@ -1,4 +1,4 @@
-function Form({ isRegister, setName, setAge, setCity, register, user, modify }) {
+function Form({ isRegister, setName, setAge, setCity, register, user, modify, remove, cancel }) {
     return (
         <form>
             <input
@@ -46,11 +46,13 @@ function Form({ isRegister, setName, setAge, setCity, register, user, modify }) 
                             type="button"
                             value="Delete"
                             className="btn btn-danger"
+                            onClick={remove}
                         />
                         <input
                             type="button"
                             value="Cancel"
                             className="btn btn-warning"
+                            onClick={cancel}
                         />
                     </div>
                 )}
