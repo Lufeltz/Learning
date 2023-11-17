@@ -13,24 +13,27 @@ function App() {
     const [users, setUsers] = useState([]);
     let user = { name, age, city };
 
+    const registerNewUser = () => {
+        let newUser = { name, age, city };
+        setUsers([...users, newUser]);
+
+        setName("");
+        setAge("");
+        setCity("");
+    };
+
     const select = (indice) => {
         setIndex(indice);
-
         setName(users[indice].name);
         setAge(users[indice].age);
         setCity(users[indice].city);
-
         setBtnRegister(false);
     };
 
-    const modify = (indice) => {
-        setIndex(indice);
-
+    const modify = () => {
         let user = { name, age, city };
-
         const usersCopy = [...users];
         usersCopy[index] = user;
-
         setUsers(usersCopy);
 
         setName("");
@@ -40,13 +43,24 @@ function App() {
         setBtnRegister(true);
     };
 
-    const registerNewUser = () => {
-        let newUser = { name, age, city };
-        setUsers([...users, newUser]);
+    const remove = () => {
+        const usersCopy = [...users];
+        usersCopy.splice(index, 1);
+        setUsers(usersCopy);
 
         setName("");
         setAge("");
         setCity("");
+
+        setBtnRegister(true);
+    };
+
+    const cancel = () => {
+        setName("");
+        setAge("");
+        setCity("");
+
+        setBtnRegister(true);
     };
 
     return (
@@ -59,6 +73,8 @@ function App() {
                 register={registerNewUser}
                 user={user}
                 modify={modify}
+                remove={remove}
+                cancel={cancel}
             />
             <Table users={users} select={select} />
         </>
