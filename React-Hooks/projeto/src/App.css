@@ -19,3 +19,8 @@ form input[type="button"]:not(:last-child) {
     display: flex;
     justify-content: space-around;
 }
+
+.search {
+    width: 35%;
+    margin: 10% auto;
+}
